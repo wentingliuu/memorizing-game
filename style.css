@@ -1,0 +1,158 @@
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  padding-top: 50px;
+}
+
+#cards {
+  display: flex;
+  flex-wrap: wrap;
+  width: 85%; /* 新增：寬度和標頭一致 */
+  margin: 0 auto;  /* 新增：置中 */
+}
+
+.card {
+  /* 卡片在容器裡的排版 */
+  box-sizing: border-box; /* 設定 box-sizing*/
+  flex: 7% 1 1;       
+  /* flex-basis, flex-grow, flex-shrink */
+  /* flex-basis: 一排要放 13 張，100 除以 13 約為 7 */
+  /* flex-grow: 0 即使有剩餘的空間，也不把空間填滿 */
+  /* flex-shrink: 1 當空間不足時，也不收縮元件大小 */
+  
+  height: 8vw; /* 高佔 8% 視窗大小 */
+  border: 1px solid #e0e0e0;
+  border-radius: 5%;
+
+  margin: 2px; /* 卡片邊距 */
+
+  /* 卡片內部元素的排版*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; /* 垂直向，上下保持均分的間隔、不貼邊 */
+}
+
+.card img {
+  max-width: 25%;
+  align-self: center;  /* 橫向置中 */
+}
+
+.card p {
+  margin: 5px;
+  font-size: 0.7em;
+}
+
+.card p:last-child {
+  transform: rotate(180deg); /* 將下方數字反轉 180 度 */
+}
+
+.back {
+    background: url('https://assets-lighthouse.alphacamp.co/uploads/image/file/9222/ExportedContentImage_00.png');
+    background-size: cover;
+}
+
+.paired {
+  background-color: #fafafa;
+}
+
+#header {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 85%;
+}
+
+#header .title {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#header .title img {
+  max-width: 3em;
+}
+
+#header .title h2 {
+  padding-left: 0.5em;
+}
+
+#header .score {
+  margin: 0;
+  color: #6c90ac;
+}
+
+#header .timer {
+  margin: 7px;
+  margin-right: 0;
+  font-weight: 700;
+  color: #5c4e21;
+}
+
+#header .tried {
+  margin-top: 0;
+}
+
+.wrong {
+  animation-name: wrongAnimation;
+  animation-duration: 0.2s;
+  animation-iteration-count: 5;
+}
+
+@keyframes wrongAnimation {
+  0% { border: none; }
+  25% { border: 1px solid #08F7FE; }
+  50% { border: 1px solid #09FBD3;}
+  75% { border: 1px solid #FF3EA5; }
+  100% { border: 1px solid #F5D300; }
+}
+
+/** Game finished **/
+.completed {
+  position: absolute;
+  z-index: 999;
+  top: 40vh;
+  background-color: RGBA(232, 246, 254, 0.8);
+  width: 100vw;
+  padding-top: 3em;
+  padding-bottom: 2em;
+}
+
+.completed > p {
+  font-size: 1.2em;
+  color: black;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 0.2em;
+}
+
+.completed > p:first-child {
+  font-size: 3em;
+  font-weight: 700;
+  color: #758d9a;
+}
+
+.completed > button {
+  display: flex;
+  justify-content: center;
+  margin: 1em auto;
+}
+
+/** AUTOPLAY **/
+#auto-play {
+	border: 0;
+}
+
+.activated {
+  animation-name: runningAnimation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes runningAnimation {
+  0% {background: #d93654;}
+	50% {background: #ff8097;}
+	100% {background: #d93654;}
+}
